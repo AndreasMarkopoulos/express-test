@@ -1,7 +1,10 @@
 const express = require('express')
 const { Configuration, OpenAIApi } = require('openai');
 const PocketBase = require('pocketbase/cjs')
+const bodyParser = require('body-parser');
+
 const cors = require('cors')
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
 require('cross-fetch/polyfill');
 
 const app = express()
@@ -26,10 +29,10 @@ app.listen(port, (err, res) => {
     }
 })
 
-app.post('/generate-meal-plan', async function (req, res) {
+app.post('/generate-meal-plan',urlencodedParser, async function (req, res) {
     try {
         if(!req.body) {
-            throw new Error('Empty request body'+JSON.parse(req))
+            throw new Error('Empty request body'+req.body)
         }
         const input = req.body.input;
         const userId = req.body.userId;
