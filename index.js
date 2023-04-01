@@ -39,7 +39,7 @@ app.post('/generate-meal-plan',urlencodedParser, async function (req, res) {
         console.log(req.body)
         const response = await sendPrompt(input,userId);
         // TODO: perform calculation based on input
-        res.send(response);
+        res.send(req.body);
     }
     catch(error) {
         console.log(error.message)
