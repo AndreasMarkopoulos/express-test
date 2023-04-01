@@ -1,9 +1,11 @@
 const express = require('express')
 const { Configuration, OpenAIApi } = require('openai');
 const PocketBase = require('pocketbase/cjs')
+const cors = require('cors')
 require('cross-fetch/polyfill');
 
 const app = express()
+app.use(cors())
 
 app.get('/', (req, res) => {
     res.send('Express JS on Vercel')
