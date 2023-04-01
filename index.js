@@ -29,7 +29,7 @@ app.listen(port, (err, res) => {
 app.post('/generate-meal-plan', async function (req, res) {
     try {
         if(!req.body) {
-            throw new Error('Empty request body'+req)
+            throw new Error('Empty request body'+JSON.parse(req))
         }
         const input = req.body.input;
         const userId = req.body.userId;
