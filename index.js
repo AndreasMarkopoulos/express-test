@@ -1,15 +1,15 @@
 const express = require('express')
 const { Configuration, OpenAIApi } = require('openai');
 const PocketBase = require('pocketbase/cjs')
-const bodyParser = require('body-parser');
 
 const cors = require('cors')
-const urlencodedParser = bodyParser.urlencoded({ extended: false })
+
 require('cross-fetch/polyfill');
 
 const app = express()
 app.use(cors())
-
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 app.get('/', (req, res) => {
     res.send('Express JS on Vercel')
 })
@@ -36,9 +36,7 @@ app.post('/generate-meal-plan',urlencodedParser, async function (req, res) {
         }
         const input = req.body.input;
         const userId = req.body.userId;
-        console.log(req.body)
         // const response = await sendPrompt(input,userId);
-        // TODO: perform calculation based on input
         res.send(req.body);
     }
     catch(error) {
