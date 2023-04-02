@@ -7,7 +7,6 @@ const cors = require('cors')
 require('cross-fetch/polyfill');
 
 const app = express()
-app.use(express.urlencoded({ extended: false }));
 app.use(cors())
 app.post('/generate-meal-plan', async function (req, res) {
     try {
@@ -16,7 +15,6 @@ app.post('/generate-meal-plan', async function (req, res) {
         }
         const input = req.body.input;
         const userId = req.body.userId;
-        res.send(req)
         // const response = await sendPrompt(input,userId);
         res.send(req.body);
     }
