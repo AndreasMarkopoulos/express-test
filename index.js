@@ -7,6 +7,7 @@ const cors = require('cors')
 require('cross-fetch/polyfill');
 
 const app = express()
+app.use(express.json())
 app.use(cors())
 app.post('/generate-meal-plan', async function (req, res) {
     try {
