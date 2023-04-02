@@ -26,12 +26,7 @@ app.listen(port, (err, res) => {
         console.log('[INFO] Server Running on port:', port)
     }
 })
-app.options('/generate-meal-plan', function(req, res) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    res.send();
-});
+app.options('*', cors())
 app.post('/generate-meal-plan',urlencodedParser, async function (req, res) {
     try {
         if(!req.body) {
