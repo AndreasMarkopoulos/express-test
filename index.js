@@ -1,14 +1,14 @@
 const express = require('express')
 const { Configuration, OpenAIApi } = require('openai');
 const PocketBase = require('pocketbase/cjs')
+const bodyParser = require('body-parser');
 
 const cors = require('cors')
 
 require('cross-fetch/polyfill');
 
 const app = express()
-app.use(express.json())
-app.use(express.urlencoded({extended: true}))
+app.use(bodyParser.json());
 app.use(cors())
 app.post('/generate-meal-plan', async function (req, res) {
     try {
