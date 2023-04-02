@@ -12,13 +12,15 @@ app.use(bodyParser.json());
 app.use(cors())
 app.post('/generate-meal-plan', async function (req, res) {
     try {
-        if(!req.body) {
-            throw new Error('Empty request body: '+req)
-        }
-        const input = req.body.input;
-        const userId = req.body.userId;
-        // const response = await sendPrompt(input,userId);
-        res.send(req.body);
+        const {body} = req;
+        res.send(body)
+        // if(!req) {
+        //     throw new Error('Empty request body: '+req)
+        // }
+        // const input = req.body.input;
+        // const userId = req.body.userId;
+        // // const response = await sendPrompt(input,userId);
+        // res.send(req.body);
     }
     catch(error) {
         console.log(error.message)
