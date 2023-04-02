@@ -8,6 +8,22 @@ require('cross-fetch/polyfill');
 
 const app = express()
 app.use(cors())
+app.post('/generate-meal-plan', async function (req, res) {
+    try {
+        if(!req.body) {
+            throw new Error('Empty request body'+req.body)
+        }
+        const input = req.body.input;
+        const userId = req.body.userId;
+        res.send(req)
+        // const response = await sendPrompt(input,userId);
+        res.send(req.body);
+    }
+    catch(error) {
+        console.log(error.message)
+        res.status(500).send(error.message)
+    }
+});
 app.get('/', (req, res) => {
     res.send('Express JS on Vercel')
 })
@@ -26,23 +42,7 @@ app.listen(port, (err, res) => {
         console.log('[INFO] Server Running on port:', port)
     }
 })
-app.options('*', cors())
-app.post('/generate-meal-plan',urlencodedParser, async function (req, res) {
-    try {
-        if(!req.body) {
-            throw new Error('Empty request body'+req.body)
-        }
-        const input = req.body.input;
-        const userId = req.body.userId;
-        res.send(req)
-        // const response = await sendPrompt(input,userId);
-        res.send(req.body);
-    }
-    catch(error) {
-        console.log(error.message)
-        res.status(500).send(error.message)
-    }
-});
+
 
 app.post('/delete/:mealplanId', async function(req, res) {
     const mealplanId = req.params.mealplanId;
