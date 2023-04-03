@@ -78,7 +78,7 @@ function caloriesForMaintenance(input) {
 async function sendPrompt(input,userId) {
     let mealplanId = '';
     const configuration = new Configuration({
-        apiKey: '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'
+        apiKey: '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'
     })
     const initializerPrompt = 'Act like a professional nutritionist with many years of experience in customized meal planning. Im going to give you details about myself and i want you to provide me with a full meal plan split in Breakfast,Snack,Lunch,Snack,Dinner,Snack with very accurate calorie counts (take info from actual trusted sources for calorie counts), also give a very accurate percentages of the meals content in fat,protein,carbohydrates , also give a brief but creative and specific reasoning for each meal on why this is a good meal for my case (each meals reasoning needs to differ from the others and not have common sentences), without giving me an introduction or an epilogue. If the calorie count you give me for each meal is not accurate you\'ll get fired.'
     const exampleMealplanResponse = 'Also include accurate percentages of nutrients(protein,carbohydrates,fat) for each meal. Here is an example of how i want you to format your response (must be JSON.parse-able): ' +
