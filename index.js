@@ -21,6 +21,9 @@ app.post('/generate-meal-plan', async function (req, res) {
         sendPrompt(input,userId).then((response) => {
             res.setHeader('Access-Control-Allow-Origin', '*')
             res.send(response);
+        }).catch((error) => {
+            res.setHeader('Access-Control-Allow-Origin', '*')
+            res.send(error)
         });
     }
     catch(error) {
