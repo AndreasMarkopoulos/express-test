@@ -10,7 +10,7 @@ require('cross-fetch/polyfill')
 const app = express()
 app.use(express.json())
 app.use(cors())
-app.get('/generate-meal-plan', async function (req, res) {
+app.post('/generate-meal-plan', async function (req, res) {
     try {
         if(!req) {
             throw new Error('Empty request body: '+req)
