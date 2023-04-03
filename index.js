@@ -18,6 +18,7 @@ app.get('/generate-meal-plan', async function (req, res) {
         const input = req.body.input;
         const userId = req.body.userId;
         const response = await sendPrompt(input,userId);
+        res.setHeader('Access-Control-Allow-Origin', '*')
         res.send(response);
     }
     catch(error) {
