@@ -5,22 +5,20 @@ const bodyParser = require('body-parser');
 
 const cors = require('cors')
 
-require('cross-fetch/polyfill');
+require('cross-fetch/polyfill')
 
 const app = express()
-app.use(bodyParser.json());
+app.use(express.json())
 app.use(cors())
-app.post('/generate-meal-plan', async function (req, res) {
+app.get('/generate-meal-plan', async function (req, res) {
     try {
-        const {body} = req;
-        res.send(body)
-        // if(!req) {
-        //     throw new Error('Empty request body: '+req)
-        // }
-        // const input = req.body.input;
-        // const userId = req.body.userId;
-        // // const response = await sendPrompt(input,userId);
-        // res.send(req.body);
+        if(!req) {
+            throw new Error('Empty request body: '+req)
+        }
+        const input = req.body.input;
+        const userId = req.body.userId;
+        const response = await sendPrompt(input,userId);
+        res.send(response);
     }
     catch(error) {
         console.log(error.message)
