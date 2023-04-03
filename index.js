@@ -23,7 +23,7 @@ app.post('/generate-meal-plan', async function (req, res) {
     }
     catch(error) {
         console.log(error.message)
-        res.status(500).send({error:error.message, body:req.body})
+        res.status(500).send({error:error, body:req.body})
     }
 });
 app.get('/', (req, res) => {
