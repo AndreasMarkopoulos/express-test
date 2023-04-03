@@ -159,8 +159,9 @@ async function sendPrompt(input,userId) {
         await uploadMealPlanToDb({mealplan: mealPlan, shoppingList: shoppingList},mealplanId,userId)
         return {mealplan: mealPlan, shoppingList: shoppingList}
     } catch (error) {
-        // await deleteMealPlanFromDb(mealplanId)
-        // await refundToken(userId)
+        await deleteMealPlanFromDb(mealplanId)
+        await refundToken(userId)
+        return error
         console.log(error)
     }
 }
