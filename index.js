@@ -17,7 +17,7 @@ app.post('/generate-meal-plan', async function (req, res) {
         }
         const input = req.body.input;
         const userId = req.body.userId;
-        res.send({body:req.body})
+        res.send({input,userId})
         const response = await sendPrompt(input,userId);
         res.setHeader('Access-Control-Allow-Origin', '*')
         res.send(response);
